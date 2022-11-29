@@ -1,0 +1,54 @@
+type Usuario{
+    id: ID!
+    nome: String!
+    mensagens: [Mensagem!]!
+    topicos: [Topico!]!
+}
+
+type Topico{
+    id: ID!
+    nome: String!
+    mensagens: [Mensagem!]!
+    usuarios: [Usuario!]!
+    inscritos: Int
+}
+
+type Mensagem{
+    id: ID!
+    conteudo: String!
+    autor: Usuario!
+    topico: Topico!
+}
+
+type Query{
+  usuarios: [Usuario!]!
+  topicos: [Topico!]!
+  mensagens: [Mensagem!]!
+  totaisPorTopico: Topico
+}
+
+type Mutation{
+    inserirMensagem(mensagem: InserirMensagemInput): Mensagem!
+    inserirUsuario(usuario: InserirUsuarioInput): Usuario!
+    atualizarUsuario (id: ID!, usuario: AtualizarUsuarioInput): Usuario!
+}
+
+type Subscription{
+    mensagem(idTopico: ID!, idUsuario: ID!): Mensagem!
+    dado: Int!
+}
+
+input InserirMensagemInput{
+    conteudo: String!
+    autor: ID!
+    topico: ID!
+}
+
+input InserirUsuarioInput{
+    nome: String!
+}
+
+input AtualizarUsuarioInput{
+    nome: String
+    topico: [ID]
+}
