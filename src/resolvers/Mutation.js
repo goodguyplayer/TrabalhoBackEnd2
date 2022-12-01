@@ -23,7 +23,8 @@ const Mutation= {
         id: uuidv4(),
         conteudo: args.mensagem.conteudo,
         autor: args.mensagem.autor,
-        topico: args.mensagem.topico
+        topico: args.mensagem.topico,
+        date: new Date()
     }
     console.log(mensagem.conteudo.length);
     //if(mensagem.conteudo.length>10){
