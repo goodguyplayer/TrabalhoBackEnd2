@@ -2,7 +2,4 @@ Coisas pra fazer:
 
 -Checar erros (O erro não registra como erro único)
 -Histórico de mensagens (Da pra pegar a query mensagem, mas elas estão sem DateTime)
--Criar o usuário admin.
--Para as operações de admin, devemos só colocar como parámetros na pesquisa pra colocar
-o login e senha no graphql, e com eles, bloquear se não forem os parametros corretos)
 -Registro de logs (Esssa parte não sei como fazer)

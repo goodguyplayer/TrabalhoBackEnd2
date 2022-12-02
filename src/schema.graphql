@@ -18,17 +18,19 @@ type Mensagem{
     conteudo: String!
     autor: Usuario!
     topico: Topico!
+    date: String!
 }
 
 type Query{
   usuarios: [Usuario!]!
   topicos: [Topico!]!
   mensagens: [Mensagem!]!
-  totaisPorTopico: Topico
+  totaisPorCategoria: String!
+  historico: [Mensagem!]!
 }
 
 type Mutation{
-    inserirMensagem(mensagem: InserirMensagemInput): Mensagem!
+    inserirMensagem(mensagem: InserirMensagemInput, idAdmin:String!, senhaAdmin:String!): Mensagem!
     inserirUsuario(usuario: InserirUsuarioInput): Usuario!
     atualizarUsuario (id: ID!, usuario: AtualizarUsuarioInput): Usuario!
 }

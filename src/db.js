@@ -1,4 +1,4 @@
-const topicos = [
+let topicos = [
     {
         id:'1',
         nome:'Cinema',
@@ -16,34 +16,38 @@ const topicos = [
     },
 ]
 
-const mensagens =[
+let mensagens =[
     {
         id:'1000',
         conteudo: 'Adoro Esportes',
         topico: '2',
-        autor:'11'
+        autor:'11',
+        date: '2020-10-10'
     },
     {
         id:'1001',
         conteudo: 'Cinema é bem legal',
         topico: '1',
-        autor:'11'
+        autor:'11',
+        date: '2020-10-11'
     },
     {
         id:'1002',
         conteudo: 'Falar de coisas aleatorias aqui',
         topico: '3',
-        autor:'10'
+        autor:'10',
+        date: '2020-10-12'
     },
     {
         id:'1003',
         conteudo: 'Adoro filmes do tarantino',
         topico: '1',
-        autor:'12'
+        autor:'12',
+        date: '2019-10-13'
     },
 ]
 
-const usuarios = [
+let usuarios = [
     {
         id: '10',
         nome: 'Henrique',

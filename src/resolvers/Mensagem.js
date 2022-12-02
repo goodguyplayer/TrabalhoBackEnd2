@@ -4,7 +4,8 @@ const Mensagem = {
     },
     topico(parent, args, ctx, info){
       return ctx.db.topicos.find(topico => topico.id === parent.topico)
-    }
+    },
+    
   }
 
 export default Mensagem

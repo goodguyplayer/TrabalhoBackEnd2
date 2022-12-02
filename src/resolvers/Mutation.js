@@ -1,5 +1,6 @@
 //Mutation to insert new message, with the paramethers of Mensagem, but the lenght of the field conteudo cannot be higher than 500 characters
 import { v4 as uuidv4 } from 'uuid';
+import { GraphQLError } from 'graphql';
 import db from '../db';
 
 const Mutation= {
@@ -19,6 +20,10 @@ const Mutation= {
         return usuario;
     },
     inserirMensagem (parent,args,ctx,info){
+    // if Clause checking if the idAdmin and senhaAdmin are not equal to admin and admin, respectively
+    if (args.idAdmin !== "admin" || args.senhaAdmin !== "admin"){
+        throw new GraphQLError ("Acesso negado");
+    }    
     const mensagem = {
         id: uuidv4(),
         conteudo: args.mensagem.conteudo,
