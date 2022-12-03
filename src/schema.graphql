@@ -1,3 +1,5 @@
+scalar Date
+
 type Usuario{
     id: ID!
     nome: String!
@@ -18,7 +20,7 @@ type Mensagem{
     conteudo: String!
     autor: Usuario!
     topico: Topico!
-    date: String!
+    date: Date!
 }
 
 type Query{
