@@ -66,6 +66,12 @@ const Query ={
         ctx.db.log.push(log);
         return totais
     },
+    consultarLog(parent, args, ctx, info){
+        if (args.acessar.idAdmin !== "admin" || args.acessar.senhaAdmin !== "admin"){
+            throw new GraphQLError ("Acesso negado");
+        }
+        return ctx.db.log
+    }
 }
 
 export default Query
