@@ -29,15 +29,7 @@ const Query ={
     historico(parent,args,ctx,info){
         const historico = ctx.db.mensagens
         historico.sort((a,b)=>{
-            const nameA = a.date.toUpperCase()
-            const nameB = b.date.toUpperCase()
-            if(nameA < nameB){
-                return -1
-            }
-            if(nameA > nameB){
-                return 1
-            }
-            return 0;
+            return new Date(b.date) - new Date(a.date);
         });
         const log={
             operacao: "Query - historico",

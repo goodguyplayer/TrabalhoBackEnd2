@@ -32,7 +32,6 @@ const Mutation= {
         return usuario;
     },
     inserirMensagem (parent,args,ctx,info){
-    // if Clause checking if the idAdmin and senhaAdmin are not equal to admin and admin, respectively
     const mensagem = {
         id: uuidv4(),
         conteudo: args.mensagem.conteudo,
@@ -53,8 +52,8 @@ const Mutation= {
         autor: mensagem.autor.id,
         date: new Date(),
     }
-    ctx.db.mensagens.push(mensagem);
     ctx.db.log.push(log);
+    ctx.db.mensagens.push(mensagem);
     ctx.pubSub.publish('mensagem', args.mensagem.topico,{mensagem});
     return mensagem
     },
