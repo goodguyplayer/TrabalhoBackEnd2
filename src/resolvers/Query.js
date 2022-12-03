@@ -40,6 +40,12 @@ const Query ={
        // })
         console.log (totais);
         return totais
+    },
+    consultarLog(parent, args, ctx, info){
+        if (args.idAdmin !== "admin" || args.senhaAdmin !== "admin"){
+            throw new GraphQLError ("Acesso negado");
+        }
+        return ctx.db.log
     }
 }
 

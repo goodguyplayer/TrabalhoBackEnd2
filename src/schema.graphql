@@ -23,16 +23,23 @@ type Mensagem{
     date: Date!
 }
 
+type Log{
+    operacao: String!
+    autor: Usuario!
+    date: Date!
+}
+
 type Query{
   usuarios: [Usuario!]!
   topicos: [Topico!]!
   mensagens: [Mensagem!]!
   totaisPorCategoria: String!
   historico: [Mensagem!]!
+  consultarLog: [Log!]!
 }
 
 type Mutation{
-    inserirMensagem(mensagem: InserirMensagemInput, idAdmin:String!, senhaAdmin:String!): Mensagem!
+    inserirMensagem(mensagem: InserirMensagemInput): Mensagem!
     inserirUsuario(usuario: InserirUsuarioInput): Usuario!
     atualizarUsuario (id: ID!, usuario: AtualizarUsuarioInput): Usuario!
 }

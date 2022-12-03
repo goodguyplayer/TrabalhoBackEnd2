@@ -65,6 +65,29 @@ let usuarios = [
     },
 ]
 
+let log = [
+    {
+        operacao: "inserirMensagem",
+        autor: "11",
+        date: new Date(2020, 10, 10)
+    },
+    {
+        operacao: "inserirMensagem",
+        autor: "11",
+        date: new Date(2020, 10, 11)
+    },
+    {
+        operacao: "inserirMensagem",
+        autor: "10",
+        date: new Date(2020, 10, 12)
+    },
+    {
+        operacao: "inserirMensagem",
+        autor: "12",
+        date: new Date(2020, 10, 13)
+    }
+]
+
 export default {
-    topicos,usuarios,mensagens
+    topicos,usuarios,mensagens,log
 }

@@ -21,9 +21,6 @@ const Mutation= {
     },
     inserirMensagem (parent,args,ctx,info){
     // if Clause checking if the idAdmin and senhaAdmin are not equal to admin and admin, respectively
-    if (args.idAdmin !== "admin" || args.senhaAdmin !== "admin"){
-        throw new GraphQLError ("Acesso negado");
-    }    
     const mensagem = {
         id: uuidv4(),
         conteudo: args.mensagem.conteudo,
