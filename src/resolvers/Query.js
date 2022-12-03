@@ -1,13 +1,16 @@
+import { v4 as uuidv4 } from 'uuid';
 import { useErrorHandler } from "@graphql-yoga/node";
 
 const Query ={
     usuarios(parent,args,ctx,info){
+        console.log(info.operation.operation + " - " + info.fieldName)
         const log={
             id: uuidv4(),
             operacao: (info.operation.operation + " - " + info.fieldName),
             date: new Date(),
         }
         ctx.db.log.push(log);
+        
         return ctx.db.usuarios
     },
     topicos(parent,args,ctx,info){
