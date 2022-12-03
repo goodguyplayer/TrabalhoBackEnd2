@@ -9,14 +9,26 @@ const Mutation= {
             id: uuidv4(),
             nome: args.usuario.nome,
         }
+        const log={
+            operacao: "Mutation - inserirUsuario",
+            autor: usuario.id,
+            date: new Date(),
+        }
         ctx.db.usuarios.push(usuario);
+        ctx.db.log.push(log);
         return usuario;
     },
     atualizarUsuario (parent, args, ctx, info){
         const usuario = ctx.db.usuarios.find(u => u.id === args.id);
+        const log={
+            operacao: "Mutation - atualizarUsuario",
+            autor: usuario.id,
+            date: new Date(),
+        }
         if (!usuario)
             throw new Error ("Usuario não existe");
         Object.assign(usuario, {nome: args.usuario.nome||usuario.nome,topico: args.usuario.topico||usuario.topico});
+        ctx.db.log.push(log);
         return usuario;
     },
     inserirMensagem (parent,args,ctx,info){
@@ -28,6 +40,7 @@ const Mutation= {
         topico: args.mensagem.topico,
         date: new Date()
     }
+
     if(mensagem.conteudo.length>=500){
         throw new GraphQLError('Mensagem muito grande', {
             extensions: {
@@ -35,8 +48,14 @@ const Mutation= {
             },
           });
     }
-    ctx.db.mensagens.push(mensagem)
-    ctx.pubSub.publish('mensagem', args.mensagem.topico,{mensagem})
+    const log={
+        operacao: "Mutation - inserirMensagem",
+        autor: mensagem.autor.id,
+        date: new Date(),
+    }
+    ctx.db.mensagens.push(mensagem);
+    ctx.db.log.push(log);
+    ctx.pubSub.publish('mensagem', args.mensagem.topico,{mensagem});
     return mensagem
     },
     consultarLog(parent, args, ctx, info){

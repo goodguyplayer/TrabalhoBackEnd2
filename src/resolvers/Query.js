@@ -1,11 +1,29 @@
 const Query ={
     usuarios(parent,args,ctx,info){
+        const log={
+            operacao: "Query - usuarios",
+            autor: "11",
+            date: new Date(),
+        }
+        ctx.db.log.push(log);
         return ctx.db.usuarios
     },
     topicos(parent,args,ctx,info){
+        const log={
+            operacao: "Query - topicos",
+            autor: "11",
+            date: new Date(),
+        }
+        ctx.db.log.push(log);
         return ctx.db.topicos
     },
     mensagens(parent,args,ctx,info){
+        const log={
+            operacao: "Query - mensagens",
+            autor: "11",
+            date: new Date(),
+        }
+        ctx.db.log.push(log);
         return ctx.db.mensagens
     },
     historico(parent,args,ctx,info){
@@ -21,7 +39,12 @@ const Query ={
             }
             return 0;
         });
-        console.log(historico)
+        const log={
+            operacao: "Query - historico",
+            autor: "11",
+            date: new Date(),
+        }
+        ctx.db.log.push(log);
         return historico
     },
     totaisPorCategoria(parent,args,ctx,info){
@@ -38,7 +61,12 @@ const Query ={
         //        total: parent.usuarios.length
         //    }
        // })
-        console.log (totais);
+       const log={
+        operacao: "Query - totaisPorCategoria",
+        autor: "11",
+        date: new Date(),
+        }
+        ctx.db.log.push(log);
         return totais
     },
 }
