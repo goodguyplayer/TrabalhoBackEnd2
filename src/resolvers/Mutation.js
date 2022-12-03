@@ -55,6 +55,7 @@ const Mutation= {
     ctx.db.log.push(log);
     ctx.db.mensagens.push(mensagem);
     ctx.pubSub.publish('mensagem', args.mensagem.topico,{mensagem});
+    ctx.pubSub.publish('log',{log});
     return mensagem
     },
 }

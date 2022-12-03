@@ -34,7 +34,7 @@ type Query{
   topicos: [Topico!]!
   mensagens: [Mensagem!]!
   historico (topico:ID!): [Mensagem!]!
-  consultarLog (acessar: InserirCredenciaisInput): [Log!]!
+  consultarLogQuery (acessar: InserirCredenciaisInput): [Log!]!
 }
 
 type Mutation{
@@ -46,6 +46,7 @@ type Mutation{
 type Subscription{
     mensagem(idTopico: ID!, idUsuario: ID!): Mensagem!
     dado: Int!
+    log (idAdmin: String!, senhaAdmin: String!): [Log!]!
 }
 
 input InserirMensagemInput{

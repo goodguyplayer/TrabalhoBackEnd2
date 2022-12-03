@@ -43,7 +43,7 @@ const Query ={
         ctx.db.log.push(log);
         return historico
     },
-    consultarLog(parent, args, ctx, info){
+    consultarLogQuery(parent, args, ctx, info){
         if (args.acessar.idAdmin !== "admin" || args.acessar.senhaAdmin !== "admin"){
             throw new GraphQLError ("Acesso negado");
         }
