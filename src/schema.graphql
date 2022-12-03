@@ -25,7 +25,6 @@ type Mensagem{
 
 type Log{
     operacao: String!
-    autor: Usuario!
     date: Date!
 }
 

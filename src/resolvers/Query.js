@@ -1,8 +1,7 @@
 const Query ={
     usuarios(parent,args,ctx,info){
         const log={
-            operacao: "Query - usuarios",
-            autor: "11",
+            operacao: (info.operation.operation + " - " + info.fieldName),
             date: new Date(),
         }
         ctx.db.log.push(log);
@@ -10,8 +9,7 @@ const Query ={
     },
     topicos(parent,args,ctx,info){
         const log={
-            operacao: "Query - topicos",
-            autor: "11",
+            operacao: (info.operation.operation + " - " + info.fieldName),
             date: new Date(),
         }
         ctx.db.log.push(log);
@@ -19,8 +17,7 @@ const Query ={
     },
     mensagens(parent,args,ctx,info){
         const log={
-            operacao: "Query - mensagens",
-            autor: "11",
+            operacao: (info.operation.operation + " - " + info.fieldName),
             date: new Date(),
         }
         ctx.db.log.push(log);
@@ -32,8 +29,7 @@ const Query ={
             return new Date(b.date) - new Date(a.date);
         });
         const log={
-            operacao: "Query - historico",
-            autor: "11",
+            operacao: (info.operation.operation + " - " + info.fieldName),
             date: new Date(),
         }
         ctx.db.log.push(log);
@@ -54,8 +50,7 @@ const Query ={
         //    }
        // })
        const log={
-        operacao: "Query - totaisPorCategoria",
-        autor: "11",
+        operacao: (info.operation.operation + " - " + info.fieldName),
         date: new Date(),
         }
         ctx.db.log.push(log);
