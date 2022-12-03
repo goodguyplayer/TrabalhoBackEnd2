@@ -3,7 +3,6 @@ import { useErrorHandler } from "@graphql-yoga/node";
 
 const Query ={
     usuarios(parent,args,ctx,info){
-        console.log(info.operation.operation + " - " + info.fieldName)
         const log={
             id: uuidv4(),
             operacao: (info.operation.operation + " - " + info.fieldName),
@@ -43,28 +42,6 @@ const Query ={
         }
         ctx.db.log.push(log);
         return historico
-    },
-    totaisPorCategoria(parent,args,ctx,info){
-        let totais = ctx.db.topicos.map(topico=>{
-            return{
-                id: topico.id,
-                nome: topico.nome,
-                total: topico.usuarios.length
-            }
-        })
-        //let totais = ctx.db.topicos.map(topico=>{
-        //    return {
-        //        nome: topico.nome,
-        //        total: parent.usuarios.length
-        //    }
-       // })
-       const log={
-        id: uuidv4(),
-        operacao: (info.operation.operation + " - " + info.fieldName),
-        date: new Date(),
-        }
-        ctx.db.log.push(log);
-        return totais
     },
     consultarLog(parent, args, ctx, info){
         if (args.acessar.idAdmin !== "admin" || args.acessar.senhaAdmin !== "admin"){
