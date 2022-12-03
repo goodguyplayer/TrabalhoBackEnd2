@@ -1,11 +1,3 @@
 Coisas pra fazer: 
 
--Checar erros (O erro não registra como erro único)
--Histórico de mensagens (Da pra pegar a query mensagem, mas elas estão sem DateTime)
--Registro de logs 
-    (2022-12-2)
-        + Adicionado type log
-        + Adicionado mutation para pesquisar por log
-        E Editado Mutations para verificar se usuário é valido
-        Falta retornar resultado
-        Falta adicionar modo de adicionar cada request no db para log.
+- Log Subscription
