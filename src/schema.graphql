@@ -33,8 +33,7 @@ type Query{
   usuarios: [Usuario!]!
   topicos: [Topico!]!
   mensagens: [Mensagem!]!
-  totaisPorCategoria: String!
-  historico: [Mensagem!]!
+  historico (topico:ID!): [Mensagem!]!
   consultarLog (acessar: InserirCredenciaisInput): [Log!]!
 }
 

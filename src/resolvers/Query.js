@@ -31,7 +31,7 @@ const Query ={
         return ctx.db.mensagens
     },
     historico(parent,args,ctx,info){
-        const historico = ctx.db.mensagens
+        const historico = ctx.db.mensagens.filter(topic => topic.topico == args.topico);
         historico.sort((a,b)=>{
             return new Date(b.date) - new Date(a.date);
         });
