@@ -28,13 +28,15 @@ const Mutation= {
         topico: args.mensagem.topico,
         date: new Date()
     }
-    console.log(mensagem.conteudo.length);
-    //if(mensagem.conteudo.length>10){
-    //    throw new Error('Mensagem muito grande');
-    //}
+    if(mensagem.conteudo.length>=500){
+        throw new GraphQLError('Mensagem muito grande', {
+            extensions: {
+              code: 'BAD_USER_INPUT',
+            },
+          });
+    }
     ctx.db.mensagens.push(mensagem)
     ctx.pubSub.publish('mensagem', args.mensagem.topico,{mensagem})
-    console.log(db.topicos.nome)
     return mensagem
     },
     consultarLog(parent, args, ctx, info){
