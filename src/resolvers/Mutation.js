@@ -10,6 +10,7 @@ const Mutation= {
             nome: args.usuario.nome,
         }
         const log={
+            id: uuidv4(),
             operacao: (info.operation.operation + " - " + info.fieldName),
             date: new Date(),
         }
@@ -20,6 +21,7 @@ const Mutation= {
     atualizarUsuario (parent, args, ctx, info){
         const usuario = ctx.db.usuarios.find(u => u.id === args.id);
         const log={
+            id: uuidv4(),
             operacao: (info.operation.operation + " - " + info.fieldName),
             date: new Date(),
         }
@@ -30,7 +32,6 @@ const Mutation= {
         return usuario;
     },
     inserirMensagem (parent,args,ctx,info){
-        console.log(info);
     const mensagem = {
         id: uuidv4(),
         conteudo: args.mensagem.conteudo,
@@ -47,6 +48,7 @@ const Mutation= {
           });
     }
     const log={
+        id: uuidv4(),
         operacao: (info.operation.operation + " - " + info.fieldName),
         date: new Date(),
     }

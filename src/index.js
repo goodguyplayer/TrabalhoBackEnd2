@@ -13,6 +13,7 @@ import Log from './resolvers/Log'
 import * as fs from 'fs'
 import { GraphQLScalarType } from 'graphql';
 import { Kind } from 'graphql/language';
+import { GraphQLError } from 'graphql';
 
 const pubSub = createPubSub()
 

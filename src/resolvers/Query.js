@@ -1,6 +1,9 @@
+import { useErrorHandler } from "@graphql-yoga/node";
+
 const Query ={
     usuarios(parent,args,ctx,info){
         const log={
+            id: uuidv4(),
             operacao: (info.operation.operation + " - " + info.fieldName),
             date: new Date(),
         }
@@ -9,6 +12,7 @@ const Query ={
     },
     topicos(parent,args,ctx,info){
         const log={
+            id: uuidv4(),
             operacao: (info.operation.operation + " - " + info.fieldName),
             date: new Date(),
         }
@@ -17,6 +21,7 @@ const Query ={
     },
     mensagens(parent,args,ctx,info){
         const log={
+            id: uuidv4(),
             operacao: (info.operation.operation + " - " + info.fieldName),
             date: new Date(),
         }
@@ -29,6 +34,7 @@ const Query ={
             return new Date(b.date) - new Date(a.date);
         });
         const log={
+            id: uuidv4(),
             operacao: (info.operation.operation + " - " + info.fieldName),
             date: new Date(),
         }
@@ -50,6 +56,7 @@ const Query ={
         //    }
        // })
        const log={
+        id: uuidv4(),
         operacao: (info.operation.operation + " - " + info.fieldName),
         date: new Date(),
         }

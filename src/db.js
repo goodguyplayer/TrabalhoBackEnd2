@@ -67,18 +67,22 @@ let usuarios = [
 
 let log = [
     {
+        id: "1",
         operacao: "mutation - inserirMensagem",
         date: new Date(2020, 10, 10)
     },
     {
+        id: "2",
         operacao: "mutation - inserirMensagem",
         date: new Date(2020, 10, 11)
     },
     {
+        id: "3",
         operacao: "mutation - inserirMensagem",
         date: new Date(2020, 10, 12)
     },
     {
+        id: "4",
         operacao: "mutation - inserirMensagem",
         date: new Date(2020, 10, 13)
     }

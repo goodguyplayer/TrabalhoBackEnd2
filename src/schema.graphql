@@ -24,6 +24,7 @@ type Mensagem{
 }
 
 type Log{
+    id: ID!
     operacao: String!
     date: Date!
 }

@@ -2,6 +2,7 @@ const Subscription = {
     mensagem: {
         subscribe(parent, {idTopico, idUsuario}, {pubSub, db}, info){
             const log={
+                id: uuidv4(),
                 operacao: (info.operation.operation + " - " + info.fieldName),
                 date: new Date(),
             }
