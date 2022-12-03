@@ -35,13 +35,13 @@ type Query{
   mensagens: [Mensagem!]!
   totaisPorCategoria: String!
   historico: [Mensagem!]!
-  consultarLog: [Log!]!
 }
 
 type Mutation{
     inserirMensagem(mensagem: InserirMensagemInput): Mensagem!
     inserirUsuario(usuario: InserirUsuarioInput): Usuario!
     atualizarUsuario (id: ID!, usuario: AtualizarUsuarioInput): Usuario!
+    consultarLog (acessar: InserirCredenciaisInput): [Log!]!
 }
 
 type Subscription{
@@ -62,4 +62,9 @@ input InserirUsuarioInput{
 input AtualizarUsuarioInput{
     nome: String
     topico: [ID]
+}
+
+input InserirCredenciaisInput{
+    idAdmin: String!
+    senhaAdmin: String!
 }

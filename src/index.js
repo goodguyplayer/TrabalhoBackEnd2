@@ -9,6 +9,7 @@ import Query from './resolvers/Query'
 import Topico from './resolvers/Topico'
 import Subscription from './resolvers/Subscription'
 import Usuario from './resolvers/Usuario'
+import Log from './resolvers/Log'
 import * as fs from 'fs'
 import { GraphQLScalarType } from 'graphql';
 import { Kind } from 'graphql/language';
@@ -18,6 +19,7 @@ const pubSub = createPubSub()
 const resolvers = {
     Query,
     Mensagem,
+    Log,
     Topico,
     Usuario,
     Mutation,

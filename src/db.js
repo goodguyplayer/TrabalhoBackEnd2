@@ -67,22 +67,22 @@ let usuarios = [
 
 let log = [
     {
-        operacao: "inserirMensagem",
+        operacao: "mutation - inserirMensagem",
         autor: "11",
         date: new Date(2020, 10, 10)
     },
     {
-        operacao: "inserirMensagem",
+        operacao: "mutation - inserirMensagem",
         autor: "11",
         date: new Date(2020, 10, 11)
     },
     {
-        operacao: "inserirMensagem",
+        operacao: "mutation - inserirMensagem",
         autor: "10",
         date: new Date(2020, 10, 12)
     },
     {
-        operacao: "inserirMensagem",
+        operacao: "mutation - inserirMensagem",
         autor: "12",
         date: new Date(2020, 10, 13)
     }

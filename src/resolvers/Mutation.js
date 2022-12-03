@@ -37,6 +37,12 @@ const Mutation= {
     console.log(db.topicos.nome)
     return mensagem
     },
+    consultarLog(parent, args, ctx, info){
+        if (args.acessar.idAdmin !== "admin" || args.acessar.senhaAdmin !== "admin"){
+            throw new GraphQLError ("Acesso negado");
+        }
+        return ctx.db.log
+    }
 }
 
 export default Mutation
