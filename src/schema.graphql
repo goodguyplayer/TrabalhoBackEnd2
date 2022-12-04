@@ -1,3 +1,5 @@
+scalar Date
+
 type Usuario{
     id: ID!
     nome: String!
@@ -18,19 +20,25 @@ type Mensagem{
     conteudo: String!
     autor: Usuario!
     topico: Topico!
-    date: String!
+    date: Date!
+}
+
+type Log{
+    id: ID!
+    operacao: String!
+    date: Date!
 }
 
 type Query{
   usuarios: [Usuario!]!
   topicos: [Topico!]!
   mensagens: [Mensagem!]!
-  totaisPorCategoria: String!
-  historico: [Mensagem!]!
+  historico (topico:ID!): [Mensagem!]!
+  consultarLogQuery (acessar: InserirCredenciaisInput): [Log!]!
 }
 
 type Mutation{
-    inserirMensagem(mensagem: InserirMensagemInput, idAdmin:String!, senhaAdmin:String!): Mensagem!
+    inserirMensagem(mensagem: InserirMensagemInput): Mensagem!
     inserirUsuario(usuario: InserirUsuarioInput): Usuario!
     atualizarUsuario (id: ID!, usuario: AtualizarUsuarioInput): Usuario!
 }
@@ -38,6 +46,7 @@ type Mutation{
 type Subscription{
     mensagem(idTopico: ID!, idUsuario: ID!): Mensagem!
     dado: Int!
+    log (idAdmin: String!, senhaAdmin: String!): [Log!]!
 }
 
 input InserirMensagemInput{
@@ -53,4 +62,9 @@ input InserirUsuarioInput{
 input AtualizarUsuarioInput{
     nome: String
     topico: [ID]
+}
+
+input InserirCredenciaisInput{
+    idAdmin: String!
+    senhaAdmin: String!
 }

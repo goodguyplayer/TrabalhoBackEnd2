@@ -9,34 +9,53 @@ const Mutation= {
             id: uuidv4(),
             nome: args.usuario.nome,
         }
+        const log={
+            id: uuidv4(),
+            operacao: (info.operation.operation + " - " + info.fieldName),
+            date: new Date(),
+        }
         ctx.db.usuarios.push(usuario);
+        ctx.db.log.push(log);
         return usuario;
     },
     atualizarUsuario (parent, args, ctx, info){
         const usuario = ctx.db.usuarios.find(u => u.id === args.id);
+        const log={
+            id: uuidv4(),
+            operacao: (info.operation.operation + " - " + info.fieldName),
+            date: new Date(),
+        }
         if (!usuario)
             throw new Error ("Usuario não existe");
         Object.assign(usuario, {nome: args.usuario.nome||usuario.nome,topico: args.usuario.topico||usuario.topico});
+        ctx.db.log.push(log);
         return usuario;
     },
     inserirMensagem (parent,args,ctx,info){
-    // if Clause checking if the idAdmin and senhaAdmin are not equal to admin and admin, respectively
-    if (args.idAdmin !== "admin" || args.senhaAdmin !== "admin"){
-        throw new GraphQLError ("Acesso negado");
-    }    
     const mensagem = {
         id: uuidv4(),
         conteudo: args.mensagem.conteudo,
         autor: args.mensagem.autor,
-        topico: args.mensagem.topico
+        topico: args.mensagem.topico,
+        date: new Date()
     }
-    console.log(mensagem.conteudo.length);
-    //if(mensagem.conteudo.length>10){
-    //    throw new Error('Mensagem muito grande');
-    //}
-    ctx.db.mensagens.push(mensagem)
-    ctx.pubSub.publish('mensagem', args.mensagem.topico,{mensagem})
-    console.log(db.topicos.nome)
+
+    if(mensagem.conteudo.length>=500){
+        throw new GraphQLError('Mensagem muito grande', {
+            extensions: {
+              code: 'BAD_USER_INPUT',
+            },
+          });
+    }
+    const log={
+        id: uuidv4(),
+        operacao: (info.operation.operation + " - " + info.fieldName),
+        date: new Date(),
+    }
+    ctx.db.log.push(log);
+    ctx.db.mensagens.push(mensagem);
+    ctx.pubSub.publish('mensagem', args.mensagem.topico,{mensagem});
+    ctx.pubSub.publish('log',{log});
     return mensagem
     },
 }

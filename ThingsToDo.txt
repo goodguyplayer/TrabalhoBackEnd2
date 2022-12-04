@@ -1,5 +1,3 @@
 Coisas pra fazer: 
 
--Checar erros (O erro não registra como erro único)
--Histórico de mensagens (Da pra pegar a query mensagem, mas elas estão sem DateTime)
--Registro de logs (Esssa parte não sei como fazer)
+- Log Subscription
